@@ -578,6 +578,7 @@
     .form-group { display: flex; flex-direction: column; gap: 8px; }
     .form-group label { font-size: 0.83rem; font-weight: 600; color: var(--muted); }
     .form-group input,
+    .form-group select,
     .form-group textarea {
       background: var(--bg2); border: 1px solid var(--border);
       border-radius: 10px; padding: 13px 16px;
@@ -585,7 +586,18 @@
       font-family: inherit; outline: none;
       transition: border-color 0.25s, box-shadow 0.25s;
     }
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23a855f7' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      cursor: pointer;
+    }
+    .form-group select option {
+      background: #0d0d1f; color: var(--text);
+    }
     .form-group input:focus,
+    .form-group select:focus,
     .form-group textarea:focus {
       border-color: var(--p2);
       box-shadow: 0 0 0 3px rgba(168,85,247,0.15);
@@ -1080,6 +1092,16 @@
           <div class="form-group">
             <label>Project Type</label>
             <input type="text" placeholder="e.g. Customer Support Bot, Booking System..." />
+          </div>
+          <div class="form-group">
+            <label>Budget</label>
+            <select>
+              <option value="" disabled selected>Select your budget range</option>
+              <option value="lt1000">Less than $1,000</option>
+              <option value="1000-5000">$1,000 – $5,000</option>
+              <option value="5000-10000">$5,000 – $10,000</option>
+              <option value="gt10000">More than $10,000</option>
+            </select>
           </div>
           <div class="form-group">
             <label>Message</label>
