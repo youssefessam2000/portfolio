@@ -603,6 +603,65 @@
       box-shadow: 0 0 0 3px rgba(168,85,247,0.15);
     }
     .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* Multi-select */
+    .multiselect { position: relative; user-select: none; }
+    .multiselect-trigger {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 13px 16px;
+      color: var(--text); font-size: 0.92rem; cursor: pointer;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .multiselect.open .multiselect-trigger {
+      border-color: var(--p2);
+      box-shadow: 0 0 0 3px rgba(168,85,247,0.15);
+      border-radius: 10px 10px 0 0;
+    }
+    .multiselect-placeholder { color: #4b4b6a; }
+    .multiselect-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ms-tag {
+      background: rgba(124,58,237,0.2); border: 1px solid var(--p1);
+      color: var(--p3); border-radius: 6px; padding: 2px 8px;
+      font-size: 0.78rem; font-weight: 600;
+    }
+    .multiselect-arrow {
+      font-size: 1.2rem; color: var(--p2); flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+    .multiselect.open .multiselect-arrow { transform: rotate(180deg); }
+    .multiselect-dropdown {
+      display: none; position: absolute; left: 0; right: 0; z-index: 50;
+      background: var(--bg2); border: 1px solid var(--p2);
+      border-top: none; border-radius: 0 0 10px 10px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    }
+    .multiselect.open .multiselect-dropdown { display: block; }
+    .ms-option {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 16px; cursor: pointer; font-size: 0.9rem;
+      transition: background 0.15s; border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .ms-option:last-child { border-bottom: none; }
+    .ms-option:hover { background: rgba(124,58,237,0.1); }
+    .ms-option input[type="checkbox"] { display: none; }
+    .ms-option span { position: relative; padding-left: 26px; }
+    .ms-option span::before {
+      content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      width: 16px; height: 16px; border-radius: 4px;
+      border: 1.5px solid var(--border); background: transparent;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .ms-option span::after {
+      content: ''; position: absolute; left: 5px; top: 50%;
+      transform: translateY(-60%) rotate(45deg);
+      width: 5px; height: 9px;
+      border-right: 2px solid #fff; border-bottom: 2px solid #fff;
+      opacity: 0; transition: opacity 0.15s;
+    }
+    .ms-option input:checked + span::before { background: var(--p1); border-color: var(--p1); }
+    .ms-option input:checked + span::after { opacity: 1; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
     /* ══════════════════════════════════════════════════════════════
@@ -1090,6 +1149,29 @@
             <input type="email" placeholder="john@company.com" required />
           </div>
           <div class="form-group">
+            <label>Project Topic(s)</label>
+            <div class="multiselect" id="topicSelect">
+              <div class="multiselect-trigger" id="topicTrigger">
+                <span class="multiselect-placeholder">Select all that apply...</span>
+                <iconify-icon icon="mdi:chevron-down" class="multiselect-arrow"></iconify-icon>
+              </div>
+              <div class="multiselect-dropdown" id="topicDropdown">
+                <label class="ms-option"><input type="checkbox" value="ecommerce"> <span>E-commerce</span></label>
+                <label class="ms-option"><input type="checkbox" value="customer-support"> <span>Customer Support</span></label>
+                <label class="ms-option"><input type="checkbox" value="reservation"> <span>Reservation / Booking</span></label>
+                <label class="ms-option"><input type="checkbox" value="healthcare"> <span>Healthcare</span></label>
+                <label class="ms-option"><input type="checkbox" value="government"> <span>Government</span></label>
+                <label class="ms-option"><input type="checkbox" value="real-estate"> <span>Real Estate</span></label>
+                <label class="ms-option"><input type="checkbox" value="education"> <span>Education</span></label>
+                <label class="ms-option"><input type="checkbox" value="food-beverage"> <span>Food & Beverage</span></label>
+                <label class="ms-option"><input type="checkbox" value="lead-generation"> <span>Lead Generation</span></label>
+                <label class="ms-option"><input type="checkbox" value="hr"> <span>HR & Recruitment</span></label>
+                <label class="ms-option"><input type="checkbox" value="finance"> <span>Finance</span></label>
+                <label class="ms-option"><input type="checkbox" value="other"> <span>Other</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
             <label>Project Type</label>
             <input type="text" placeholder="e.g. Customer Support Bot, Booking System..." />
           </div>
@@ -1254,6 +1336,30 @@
   }, { threshold: 0.5 });
   const statsEl = document.querySelector('.hero-stats');
   if (statsEl) statObs.observe(statsEl);
+
+  /* ── Multi-select ──────────────────────────────────────────── */
+  const ms = document.getElementById('topicSelect');
+  const trigger = document.getElementById('topicTrigger');
+  const placeholder = trigger.querySelector('.multiselect-placeholder');
+  const checkboxes = ms.querySelectorAll('input[type="checkbox"]');
+
+  trigger.addEventListener('click', () => ms.classList.toggle('open'));
+
+  document.addEventListener('click', e => {
+    if (!ms.contains(e.target)) ms.classList.remove('open');
+  });
+
+  function updateTrigger() {
+    const selected = [...checkboxes].filter(c => c.checked).map(c => c.closest('.ms-option').querySelector('span').textContent.trim());
+    if (selected.length === 0) {
+      trigger.innerHTML = `<span class="multiselect-placeholder">Select all that apply...</span><iconify-icon icon="mdi:chevron-down" class="multiselect-arrow"></iconify-icon>`;
+    } else {
+      const tags = selected.map(s => `<span class="ms-tag">${s}</span>`).join('');
+      trigger.innerHTML = `<div class="multiselect-tags">${tags}</div><iconify-icon icon="mdi:chevron-down" class="multiselect-arrow ${ms.classList.contains('open') ? 'open' : ''}"></iconify-icon>`;
+    }
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener('change', updateTrigger));
 
   /* ── Form submit ───────────────────────────────────────────── */
   function handleSubmit(e) {
