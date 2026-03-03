@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Youssef Essam — Conversational AI Designer</title>
+  <title>Arzenovate — Conversational AI Designer</title>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <style>
     /* ─── Reset & Base ─────────────────────────────────────────── */
@@ -201,6 +201,10 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-text {
       font-weight: 800; font-size: 1.15rem;
       background: linear-gradient(135deg, var(--p1), var(--p3));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -705,7 +709,24 @@
 <!-- ─── NAV ─────────────────────────────────────────────────── -->
 <nav id="navbar">
   <div class="inner">
-    <div class="nav-logo">YE.</div>
+    <div class="nav-logo">
+      <svg width="34" height="34" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#7c3aed"/>
+            <stop offset="100%" stop-color="#c084fc"/>
+          </linearGradient>
+        </defs>
+        <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="rgba(124,58,237,0.15)"/>
+        <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="url(#logoGrad)" stroke-width="1.5"/>
+        <path d="M12 26 L18 10 L24 26" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M14 21 L22 21" stroke="url(#logoGrad)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="18" cy="10" r="2" fill="#a855f7"/>
+        <circle cx="12" cy="26" r="1.5" fill="#7c3aed"/>
+        <circle cx="24" cy="26" r="1.5" fill="#7c3aed"/>
+      </svg>
+      <span class="nav-logo-text">Arzenovate</span>
+    </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -729,8 +750,9 @@
       </div>
 
       <h1 class="hero-name">
-        <span class="grad">Youssef</span><br>Essam
+        <span class="grad">Arzenovate</span>
       </h1>
+      <p style="font-size:1rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--p3); margin-bottom:18px; animation: fadeInUp 0.9s ease 0.22s both;">Innovate for the Future</p>
 
       <p class="hero-tagline">Conversational AI Designer &amp; Automation Engineer</p>
 
@@ -773,7 +795,7 @@
       <div class="about-img-wrap reveal">
         <div class="about-img-box">
           <span class="avatar-icon"><iconify-icon icon="mdi:robot" style="color:var(--p2);font-size:4.5rem;"></iconify-icon></span>
-          <div class="avatar-name">Youssef Essam</div>
+          <div class="avatar-name">Arzenovate</div>
           <div class="avatar-role">Conversational AI Designer</div>
         </div>
         <div class="about-decor"></div>
@@ -1203,7 +1225,7 @@
 
 <!-- ─── FOOTER ────────────────────────────────────────────────── -->
 <footer>
-  <p>© 2025 <span>Youssef Essam</span>. Designed &amp; built with passion.</p>
+  <p>© 2025 <span>Arzenovate</span>. Designed &amp; built with passion.</p>
 </footer>
 
 <script>
