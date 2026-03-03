@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Youssef Essam — Conversational AI Designer</title>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <style>
     /* ─── Reset & Base ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -98,6 +99,82 @@
       width: 60px; height: 3px;
       background: linear-gradient(90deg, var(--p1), var(--p2));
       border-radius: 2px; margin-bottom: 60px;
+    }
+
+    /* ─── Iconify icon sizing ───────────────────────────────────── */
+    .skill-icon iconify-icon,
+    .project-emoji iconify-icon { font-size: inherit; display: block; }
+    .avatar-icon iconify-icon { font-size: 4.5rem; color: var(--p2); display: block; }
+    .tool-icon iconify-icon { font-size: 1rem; display: inline-flex; vertical-align: middle; }
+    .contact-icon iconify-icon { font-size: 1.3rem; color: #fff; display: block; }
+
+    /* ─── Pricing ────────────────────────────────────────────────── */
+    #pricing {}
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; align-items: stretch;
+    }
+    .pricing-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px 28px;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .pricing-card::before {
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      background: linear-gradient(135deg, rgba(124,58,237,0.07), transparent);
+      transition: opacity 0.3s; pointer-events: none;
+    }
+    .pricing-card:hover { transform: translateY(-6px); border-color: var(--p2); box-shadow: var(--glow); }
+    .pricing-card:hover::before { opacity: 1; }
+    .pricing-card.popular {
+      border-color: var(--p1);
+      background: linear-gradient(160deg, rgba(124,58,237,0.12), var(--bg3) 60%);
+      box-shadow: 0 0 0 1px var(--p1), var(--glow);
+    }
+    .pricing-card.popular:hover { transform: translateY(-8px); box-shadow: 0 0 0 1px var(--p2), 0 20px 60px rgba(124,58,237,0.4); }
+    .popular-badge {
+      position: absolute; top: 18px; right: 18px;
+      background: linear-gradient(135deg, var(--p1), var(--p2));
+      color: #fff; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; padding: 4px 12px; border-radius: 100px;
+    }
+    .pricing-tier { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--p3); margin-bottom: 12px; }
+    .pricing-price {
+      font-size: 3rem; font-weight: 900; line-height: 1;
+      margin-bottom: 6px;
+    }
+    .pricing-price span { font-size: 1.4rem; font-weight: 600; vertical-align: super; color: var(--p2); }
+    .pricing-price.custom-price { font-size: 2rem; }
+    .pricing-sub { color: var(--muted); font-size: 0.82rem; margin-bottom: 28px; }
+    .pricing-divider { height: 1px; background: var(--border); margin-bottom: 24px; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; flex: 1; margin-bottom: 28px; }
+    .pricing-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text); }
+    .pricing-features li iconify-icon { color: var(--p2); flex-shrink: 0; font-size: 1rem; margin-top: 1px; }
+    .pricing-cta { margin-top: auto; }
+    .pricing-cta a {
+      display: block; text-align: center;
+      padding: 13px 24px; border-radius: 10px;
+      font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; transition: all 0.25s;
+    }
+    .pricing-cta a.filled {
+      background: linear-gradient(135deg, var(--p1), var(--p2));
+      color: #fff; box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    }
+    .pricing-cta a.filled:hover { box-shadow: 0 8px 32px rgba(124,58,237,0.5); transform: translateY(-2px); }
+    .pricing-cta a.outlined {
+      border: 1.5px solid var(--border); color: var(--p3);
+    }
+    .pricing-cta a.outlined:hover { border-color: var(--p2); background: rgba(124,58,237,0.08); }
+    .pricing-note {
+      text-align: center; color: var(--muted); font-size: 0.82rem; margin-top: 36px;
+    }
+    .pricing-note strong { color: var(--p3); }
+    @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
     }
 
     /* ─── Scroll reveal ─────────────────────────────────────────── */
@@ -562,6 +639,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#pricing">Pricing</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="hamburger" id="hamburger" aria-label="menu">
@@ -623,7 +701,7 @@
     <div class="about-grid">
       <div class="about-img-wrap reveal">
         <div class="about-img-box">
-          <span class="avatar-icon">🤖</span>
+          <span class="avatar-icon"><iconify-icon icon="mdi:robot" style="color:var(--p2);font-size:4.5rem;"></iconify-icon></span>
           <div class="avatar-name">Youssef Essam</div>
           <div class="avatar-role">Conversational AI Designer</div>
         </div>
@@ -638,12 +716,12 @@
         <p>Every chatbot I build is purpose-built: fast to deploy, easy to maintain, and designed to move real business metrics.</p>
 
         <div class="tools-row">
-          <span class="tool-badge"><span class="tool-icon">🔷</span> Voiceflow</span>
-          <span class="tool-badge"><span class="tool-icon">⚙️</span> Make.com</span>
-          <span class="tool-badge"><span class="tool-icon">🔗</span> REST APIs</span>
-          <span class="tool-badge"><span class="tool-icon">🧠</span> RAG Systems</span>
-          <span class="tool-badge"><span class="tool-icon">🗄️</span> Airtable / DB</span>
-          <span class="tool-badge"><span class="tool-icon">🤖</span> AI / LLMs</span>
+          <span class="tool-badge"><span class="tool-icon"><iconify-icon icon="mdi:microphone-message"></iconify-icon></span> Voiceflow</span>
+          <span class="tool-badge"><span class="tool-icon"><iconify-icon icon="mdi:puzzle"></iconify-icon></span> Make.com</span>
+          <span class="tool-badge"><span class="tool-icon"><iconify-icon icon="mdi:api"></iconify-icon></span> REST APIs</span>
+          <span class="tool-badge"><span class="tool-icon"><iconify-icon icon="mdi:brain"></iconify-icon></span> RAG Systems</span>
+          <span class="tool-badge"><span class="tool-icon"><iconify-icon icon="mdi:database"></iconify-icon></span> Airtable / DB</span>
+          <span class="tool-badge"><span class="tool-icon"><iconify-icon icon="mdi:robot-outline"></iconify-icon></span> AI / LLMs</span>
         </div>
       </div>
     </div>
@@ -661,32 +739,32 @@
 
     <div class="skills-grid">
       <div class="skill-card reveal">
-        <span class="skill-icon">💬</span>
+        <span class="skill-icon"><iconify-icon icon="mdi:chat-processing" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></span>
         <div class="skill-title">Conversation Design</div>
         <div class="skill-desc">Architecting dialogue flows that feel natural and guide users to their goal with minimal friction. Intent mapping, entity extraction, and fallback strategy.</div>
       </div>
       <div class="skill-card reveal" style="transition-delay:0.1s">
-        <span class="skill-icon">🔌</span>
+        <span class="skill-icon"><iconify-icon icon="mdi:api" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></span>
         <div class="skill-title">API & Backend Integration</div>
         <div class="skill-desc">Connecting chatbots to live backends via REST APIs — fetching dynamic data, writing to databases, triggering workflows, and syncing leads in real time.</div>
       </div>
       <div class="skill-card reveal" style="transition-delay:0.2s">
-        <span class="skill-icon">⚙️</span>
+        <span class="skill-icon"><iconify-icon icon="mdi:cogs" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></span>
         <div class="skill-title">Workflow Automation</div>
         <div class="skill-desc">Building no-code / low-code automation pipelines with Make.com to connect CRMs, notification systems, scheduling tools, and data stores seamlessly.</div>
       </div>
       <div class="skill-card reveal" style="transition-delay:0.3s">
-        <span class="skill-icon">🧠</span>
+        <span class="skill-icon"><iconify-icon icon="mdi:brain" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></span>
         <div class="skill-title">RAG & AI Knowledge Bases</div>
         <div class="skill-desc">Implementing Retrieval-Augmented Generation systems to give chatbots accurate, context-aware answers grounded in real business knowledge.</div>
       </div>
       <div class="skill-card reveal" style="transition-delay:0.4s">
-        <span class="skill-icon">📅</span>
+        <span class="skill-icon"><iconify-icon icon="mdi:calendar-check" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></span>
         <div class="skill-title">Booking & Reservation Bots</div>
         <div class="skill-desc">End-to-end appointment scheduling bots with availability checks, confirmation flows, reminders, and CRM sync for clinics, restaurants, and services.</div>
       </div>
       <div class="skill-card reveal" style="transition-delay:0.5s">
-        <span class="skill-icon">🛒</span>
+        <span class="skill-icon"><iconify-icon icon="mdi:cart" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></span>
         <div class="skill-title">E-commerce Chatbots</div>
         <div class="skill-desc">AI-powered product recommendation, cart management, order creation, and real-time order tracking — from browsing to post-purchase support.</div>
       </div>
@@ -708,7 +786,7 @@
       <!-- TopProz — Featured -->
       <div class="project-card featured reveal">
         <div class="project-header">
-          <div class="project-emoji">🏠</div>
+          <div class="project-emoji"><iconify-icon icon="mdi:home-wrench" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></div>
           <div class="project-meta">
             <div class="project-name">TopProz Home Services AI</div>
             <div class="project-client">Client: TopProz — USA</div>
@@ -756,7 +834,7 @@
       <!-- Clinic Reservation -->
       <div class="project-card reveal" style="transition-delay:0.1s">
         <div class="project-header">
-          <div class="project-emoji">🏥</div>
+          <div class="project-emoji"><iconify-icon icon="mdi:hospital-box" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></div>
           <div class="project-meta">
             <div class="project-name">Clinic Reservation Bot</div>
             <div class="project-client">Healthcare — Appointment System</div>
@@ -782,7 +860,7 @@
       <!-- Pizza Bot -->
       <div class="project-card reveal" style="transition-delay:0.2s">
         <div class="project-header">
-          <div class="project-emoji">🍕</div>
+          <div class="project-emoji"><iconify-icon icon="mdi:pizza" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></div>
           <div class="project-meta">
             <div class="project-name">Pizza Ordering Chatbot</div>
             <div class="project-client">Food & Beverage — Full Order System</div>
@@ -808,7 +886,7 @@
       <!-- E-commerce Bot -->
       <div class="project-card reveal" style="transition-delay:0.3s">
         <div class="project-header">
-          <div class="project-emoji">🛍️</div>
+          <div class="project-emoji"><iconify-icon icon="mdi:shopping" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></div>
           <div class="project-meta">
             <div class="project-name">E-commerce AI Assistant</div>
             <div class="project-client">Retail — Product & Order Bot</div>
@@ -834,7 +912,7 @@
       <!-- RAG System -->
       <div class="project-card reveal" style="transition-delay:0.4s">
         <div class="project-header">
-          <div class="project-emoji">🧠</div>
+          <div class="project-emoji"><iconify-icon icon="mdi:brain" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></div>
           <div class="project-meta">
             <div class="project-name">RAG Knowledge Systems</div>
             <div class="project-client">Custom AI — Multiple Clients</div>
@@ -862,6 +940,88 @@
   </div>
 </section>
 
+<!-- ─── PRICING ──────────────────────────────────────────────── -->
+<section id="pricing">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Investment</div>
+      <div class="section-title">Simple, Transparent <span class="grad">Pricing</span></div>
+      <div class="section-sub">No hidden fees. Every project includes a free discovery call to scope your exact needs.</div>
+      <div class="divider"></div>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Basic -->
+      <div class="pricing-card reveal">
+        <div class="pricing-tier">Basic</div>
+        <div class="pricing-price"><span>$</span>150</div>
+        <div class="pricing-sub">One-time project fee</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Simple FAQ or support chatbot</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Up to 10 intents / dialogue flows</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Single platform (Web or WhatsApp)</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Clean, natural conversation design</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Delivered in ~1 week</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> 1 round of revisions</li>
+        </ul>
+        <div class="pricing-cta">
+          <a href="#contact" class="outlined">Get Started</a>
+        </div>
+      </div>
+
+      <!-- Advanced — Most Popular -->
+      <div class="pricing-card popular reveal" style="transition-delay:0.1s">
+        <div class="popular-badge">Most Popular</div>
+        <div class="pricing-tier">Advanced</div>
+        <div class="pricing-price"><span>$</span>500</div>
+        <div class="pricing-sub">One-time project fee</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Everything in Basic</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Live API & backend integrations</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Make.com automation workflows</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> CRM / database sync</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Multi-platform deployment</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Booking, lead gen, or order flows</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Delivered in ~2 weeks</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> 2 rounds of revisions</li>
+        </ul>
+        <div class="pricing-cta">
+          <a href="#contact" class="filled">Get Started</a>
+        </div>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="pricing-card reveal" style="transition-delay:0.2s">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-price custom-price grad">Custom</div>
+        <div class="pricing-sub">Scoped per project</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Everything in Advanced</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> RAG & AI knowledge base systems</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Full end-to-end workflow automation</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Multi-system & legacy integrations</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Custom AI logic & LLM prompting</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Ongoing support & maintenance</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Timeline based on scope</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Unlimited revisions</li>
+        </ul>
+        <div class="pricing-cta">
+          <a href="#contact" class="outlined">Request a Quote</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="pricing-note reveal">
+      Not sure which plan fits? <strong>Send me a message</strong> — I'll help you figure out the right scope for your budget.
+    </p>
+  </div>
+</section>
+
 <!-- ─── CONTACT ───────────────────────────────────────────────── -->
 <section id="contact">
   <div class="container">
@@ -878,21 +1038,21 @@
 
         <div class="contact-links">
           <a href="mailto:arzenovate.ai@gmail.com" class="contact-link">
-            <div class="contact-icon">✉️</div>
+            <div class="contact-icon"><iconify-icon icon="mdi:email"></iconify-icon></div>
             <div>
               <div class="contact-link-label">Email</div>
               <div class="contact-link-val">arzenovate.ai@gmail.com</div>
             </div>
           </a>
           <a href="https://www.linkedin.com/in/youssef-essamm/" target="_blank" class="contact-link">
-            <div class="contact-icon">💼</div>
+            <div class="contact-icon"><iconify-icon icon="mdi:linkedin"></iconify-icon></div>
             <div>
               <div class="contact-link-label">LinkedIn</div>
               <div class="contact-link-val">linkedin.com/in/youssef-essamm</div>
             </div>
           </a>
           <a href="https://wa.me/201280004391" target="_blank" class="contact-link">
-            <div class="contact-icon">💬</div>
+            <div class="contact-icon"><iconify-icon icon="mdi:whatsapp"></iconify-icon></div>
             <div>
               <div class="contact-link-label">WhatsApp</div>
               <div class="contact-link-val">+20 128 000 4391</div>
