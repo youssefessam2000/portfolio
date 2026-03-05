@@ -1387,10 +1387,19 @@
   /* ── Form submit ───────────────────────────────────────────── */
   function handleSubmit(e) {
     e.preventDefault();
+    const form = e.target;
     const msg = document.getElementById('formMsg');
-    msg.style.display = 'block';
-    e.target.reset();
-    setTimeout(() => { msg.style.display = 'none'; }, 5000);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(() => {
+      msg.style.display = 'block';
+      form.reset();
+      setTimeout(() => { msg.style.display = 'none'; }, 5000);
+    }).catch(() => {
+      alert('Something went wrong. Please try again.');
+    });
   }
 </script>
 </body>
