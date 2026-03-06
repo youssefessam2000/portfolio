@@ -108,6 +108,89 @@
     .tool-icon iconify-icon { font-size: 1rem; display: inline-flex; vertical-align: middle; }
     .contact-icon iconify-icon { font-size: 1.3rem; color: #fff; display: block; }
 
+    /* ─── Shopify ───────────────────────────────────────────────── */
+    #shopify { background: var(--bg2); }
+    .shopify-showcase {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .shopify-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(150,191,72,0.1);
+      border: 1px solid rgba(150,191,72,0.3);
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 0.78rem; font-weight: 700; color: #96bf48;
+      margin-bottom: 20px;
+    }
+    .shopify-badge iconify-icon { font-size: 1rem; }
+    .shopify-headline {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800; line-height: 1.25; margin-bottom: 16px;
+    }
+    .shopify-desc {
+      color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 32px;
+    }
+    .shopify-features {
+      list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px;
+    }
+    .shopify-features li {
+      display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem;
+    }
+    .shopify-features li iconify-icon { color: #96bf48; font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .shopify-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #5e8e3e, #96bf48);
+      color: #fff; font-weight: 700; font-size: 0.95rem;
+      padding: 14px 28px; border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(150,191,72,0.3);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .shopify-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(150,191,72,0.45); }
+    .shopify-visual {
+      background: rgba(18,18,42,0.75);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(150,191,72,0.2);
+      border-radius: 20px; padding: 28px;
+      position: relative;
+      box-shadow: 0 0 40px rgba(150,191,72,0.08);
+    }
+    .shopify-visual::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, #96bf48, transparent);
+    }
+    .shopify-visual-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #96bf48; margin-bottom: 20px;
+    }
+    .chat-bubble-row { display: flex; gap: 10px; margin-bottom: 14px; align-items: flex-end; }
+    .chat-bubble-row.user { flex-direction: row-reverse; }
+    .chat-avatar {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+    }
+    .chat-avatar.bot { background: linear-gradient(135deg, #5e8e3e, #96bf48); }
+    .chat-avatar.user-av { background: linear-gradient(135deg, var(--p1), var(--p2)); }
+    .chat-bubble {
+      max-width: 75%; padding: 10px 14px; border-radius: 14px;
+      font-size: 0.82rem; line-height: 1.6;
+    }
+    .chat-bubble.bot {
+      background: rgba(150,191,72,0.1); border: 1px solid rgba(150,191,72,0.2);
+      color: var(--text); border-bottom-left-radius: 4px;
+    }
+    .chat-bubble.user {
+      background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.25);
+      color: var(--text); border-bottom-right-radius: 4px;
+    }
+    .shopify-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+    .shopify-tag {
+      background: rgba(150,191,72,0.1); border: 1px solid rgba(150,191,72,0.25);
+      border-radius: 100px; padding: 3px 10px;
+      font-size: 0.72rem; font-weight: 600; color: #96bf48;
+    }
+    @media(max-width:768px) { .shopify-showcase { grid-template-columns: 1fr; } }
+
     /* ─── Pricing ────────────────────────────────────────────────── */
     #pricing {}
     .pricing-grid {
@@ -115,7 +198,9 @@
       gap: 24px; align-items: stretch;
     }
     .pricing-card {
-      background: var(--bg3);
+      background: rgba(18,18,42,0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--border);
       border-radius: 20px; padding: 36px 28px;
       display: flex; flex-direction: column;
@@ -124,17 +209,28 @@
     }
     .pricing-card::before {
       content: ''; position: absolute; inset: 0; opacity: 0;
-      background: linear-gradient(135deg, rgba(124,58,237,0.07), transparent);
+      background: linear-gradient(135deg, rgba(124,58,237,0.08), transparent 60%);
       transition: opacity 0.3s; pointer-events: none;
     }
-    .pricing-card:hover { transform: translateY(-6px); border-color: var(--p2); box-shadow: var(--glow); }
+    .pricing-card:hover { transform: translateY(-6px); border-color: var(--p2); box-shadow: 0 20px 60px rgba(124,58,237,0.3), inset 0 1px 0 rgba(255,255,255,0.05); }
     .pricing-card:hover::before { opacity: 1; }
     .pricing-card.popular {
       border-color: var(--p1);
-      background: linear-gradient(160deg, rgba(124,58,237,0.12), var(--bg3) 60%);
-      box-shadow: 0 0 0 1px var(--p1), var(--glow);
+      background: linear-gradient(160deg, rgba(124,58,237,0.15), rgba(18,18,42,0.8) 60%);
+      box-shadow: 0 0 0 1px var(--p1), 0 0 40px rgba(124,58,237,0.25);
     }
-    .pricing-card.popular:hover { transform: translateY(-8px); box-shadow: 0 0 0 1px var(--p2), 0 20px 60px rgba(124,58,237,0.4); }
+    .pricing-card.popular:hover { transform: translateY(-8px); box-shadow: 0 0 0 1px var(--p2), 0 20px 60px rgba(124,58,237,0.45); }
+    .pricing-card.popular::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--p2), var(--p3), transparent);
+      animation: shimmerLine 3s linear infinite;
+    }
+    @keyframes shimmerLine {
+      0%   { opacity: 0.4; transform: scaleX(0.6); }
+      50%  { opacity: 1;   transform: scaleX(1); }
+      100% { opacity: 0.4; transform: scaleX(0.6); }
+    }
     .popular-badge {
       position: absolute; top: 18px; right: 18px;
       background: linear-gradient(135deg, var(--p1), var(--p2));
@@ -461,18 +557,30 @@
     }
 
     .project-card {
-      background: var(--bg3);
+      background: rgba(18,18,42,0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: 20px;
       overflow: hidden;
       transition: transform 0.35s cubic-bezier(.25,.8,.25,1), box-shadow 0.35s, border-color 0.35s;
       position: relative;
     }
+    .project-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.05) 0%, transparent 60%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
     .project-card:hover {
       transform: translateY(-8px);
       border-color: var(--p2);
-      box-shadow: 0 16px 60px rgba(124,58,237,0.25);
+      box-shadow: 0 20px 60px rgba(124,58,237,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
     }
+    .project-card:hover::after { opacity: 1; }
 
     .project-header {
       padding: 28px 28px 20px;
@@ -481,11 +589,17 @@
     }
     .project-emoji {
       font-size: 2.2rem;
-      width: 56px; height: 56px;
+      width: 60px; height: 60px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(124,58,237,0.12);
-      border: 1px solid var(--border);
-      border-radius: 14px; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(168,85,247,0.15));
+      border: 1px solid rgba(124,58,237,0.35);
+      border-radius: 16px; flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(124,58,237,0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+      animation: iconPulse 3s ease-in-out infinite;
+    }
+    @keyframes iconPulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(124,58,237,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
+      50%       { box-shadow: 0 0 32px rgba(168,85,247,0.4), inset 0 1px 0 rgba(255,255,255,0.08); }
     }
     .project-meta { flex: 1; }
     .project-name { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
@@ -509,10 +623,16 @@
       display: flex; gap: 8px; flex-wrap: wrap;
     }
     .tag {
-      background: rgba(124,58,237,0.1);
-      border: 1px solid rgba(124,58,237,0.2);
-      border-radius: 6px; padding: 4px 10px;
-      font-size: 0.75rem; font-weight: 600; color: var(--p3);
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 100px; padding: 4px 12px;
+      font-size: 0.73rem; font-weight: 600; color: var(--p3);
+      transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .tag:hover {
+      background: rgba(124,58,237,0.22);
+      border-color: var(--p2);
+      box-shadow: 0 0 10px rgba(124,58,237,0.2);
     }
 
     /* featured card spans full width */
@@ -731,6 +851,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#shopify">Shopify</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -804,9 +925,9 @@
       <div class="about-text reveal" style="transition-delay:0.15s">
         <div class="section-label">About Me</div>
         <h2>Designing AI that <span class="grad">actually talks</span> to people</h2>
-        <p>I'm a Conversational AI Designer with 2+ years of hands-on experience building intelligent chatbots and voice assistants that feel natural, helpful, and human.</p>
+        <p>I'm a Conversational AI Designer with 2+ years of hands-on experience building intelligent AI agents and voice assistants that feel natural, helpful, and human.</p>
         <p>I specialize in end-to-end bot design — from conversation flows and intent architecture to API integrations, backend automation, and RAG-powered knowledge systems. My work spans industries including home services, healthcare, food & beverage, and e-commerce.</p>
-        <p>Every chatbot I build is purpose-built: fast to deploy, easy to maintain, and designed to move real business metrics.</p>
+        <p>Every AI agent I build is purpose-built: fast to deploy, easy to maintain, and designed to move real business metrics.</p>
 
         <div class="tools-row">
           <span class="tool-badge"><span class="tool-icon"><iconify-icon icon="mdi:microphone-message"></iconify-icon></span> Voiceflow</span>
@@ -839,7 +960,7 @@
       <div class="skill-card reveal" style="transition-delay:0.1s">
         <span class="skill-icon"><iconify-icon icon="mdi:api" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></span>
         <div class="skill-title">API & Backend Integration</div>
-        <div class="skill-desc">Connecting chatbots to live backends via REST APIs — fetching dynamic data, writing to databases, triggering workflows, and syncing leads in real time.</div>
+        <div class="skill-desc">Connecting AI agents to live backends via REST APIs — fetching dynamic data, writing to databases, triggering workflows, and syncing leads in real time.</div>
       </div>
       <div class="skill-card reveal" style="transition-delay:0.2s">
         <span class="skill-icon"><iconify-icon icon="mdi:cogs" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></span>
@@ -849,7 +970,7 @@
       <div class="skill-card reveal" style="transition-delay:0.3s">
         <span class="skill-icon"><iconify-icon icon="mdi:brain" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></span>
         <div class="skill-title">RAG & AI Knowledge Bases</div>
-        <div class="skill-desc">Implementing Retrieval-Augmented Generation systems to give chatbots accurate, context-aware answers grounded in real business knowledge.</div>
+        <div class="skill-desc">Implementing Retrieval-Augmented Generation systems to give AI agents accurate, context-aware answers grounded in real business knowledge.</div>
       </div>
       <div class="skill-card reveal" style="transition-delay:0.4s">
         <span class="skill-icon"><iconify-icon icon="mdi:calendar-check" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></span>
@@ -858,7 +979,7 @@
       </div>
       <div class="skill-card reveal" style="transition-delay:0.5s">
         <span class="skill-icon"><iconify-icon icon="mdi:cart" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></span>
-        <div class="skill-title">E-commerce Chatbots</div>
+        <div class="skill-title">E-commerce AI Agents</div>
         <div class="skill-desc">AI-powered product recommendation, cart management, order creation, and real-time order tracking — from browsing to post-purchase support.</div>
       </div>
     </div>
@@ -934,7 +1055,7 @@
           </div>
         </div>
         <div class="project-body">
-          <p class="project-desc">A smart appointment scheduling chatbot for a medical clinic — handling patient intake, doctor availability, booking confirmation, and reminders through a seamless conversational interface.</p>
+          <p class="project-desc">A smart appointment scheduling AI agent for a medical clinic — handling patient intake, doctor availability, booking confirmation, and reminders through a seamless conversational interface.</p>
           <ul class="project-features">
             <li>Real-time availability checking via API</li>
             <li>Patient information collection and validation</li>
@@ -955,12 +1076,12 @@
         <div class="project-header">
           <div class="project-emoji"><iconify-icon icon="mdi:pizza" style="font-size:2.2rem;color:var(--p2);"></iconify-icon></div>
           <div class="project-meta">
-            <div class="project-name">Pizza Ordering Chatbot</div>
+            <div class="project-name">Pizza Ordering AI Agent</div>
             <div class="project-client">Food & Beverage — Full Order System</div>
           </div>
         </div>
         <div class="project-body">
-          <p class="project-desc">An end-to-end food ordering chatbot that recommends pizzas based on preferences, manages cart building, processes orders, and provides real-time delivery tracking — all within a single conversation.</p>
+          <p class="project-desc">An end-to-end food ordering AI agent that recommends pizzas based on preferences, manages cart building, processes orders, and provides real-time delivery tracking — all within a single conversation.</p>
           <ul class="project-features">
             <li>AI-powered menu recommendations by taste preference</li>
             <li>Multi-item cart management within conversation</li>
@@ -997,6 +1118,7 @@
             <span class="tag">Voiceflow</span>
             <span class="tag">Product API</span>
             <span class="tag">Make.com</span>
+            <span class="tag">Shopify</span>
             <span class="tag">E-commerce</span>
           </div>
         </div>
@@ -1012,7 +1134,7 @@
           </div>
         </div>
         <div class="project-body">
-          <p class="project-desc">Custom Retrieval-Augmented Generation implementations that give chatbots access to private business knowledge — enabling accurate, grounded answers from internal documentation, FAQs, and product data.</p>
+          <p class="project-desc">Custom Retrieval-Augmented Generation implementations that give AI agents access to private business knowledge — enabling accurate, grounded answers from internal documentation, FAQs, and product data.</p>
           <ul class="project-features">
             <li>Vector database setup and document ingestion</li>
             <li>Semantic search and context injection into LLM prompts</li>
@@ -1033,53 +1155,124 @@
   </div>
 </section>
 
+<!-- ─── SHOPIFY ───────────────────────────────────────────────── -->
+<section id="shopify">
+  <div class="container">
+    <div class="shopify-showcase reveal">
+
+      <!-- Left: Info -->
+      <div>
+        <div class="shopify-badge">
+          <iconify-icon icon="mdi:shopify"></iconify-icon> Shopify Integration
+        </div>
+        <div class="shopify-headline">
+          AI Agent for<br><span style="background:linear-gradient(135deg,#5e8e3e,#96bf48);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Shopify Stores</span>
+        </div>
+        <p class="shopify-desc">
+          A custom AI agent built specifically for Shopify stores — helping store owners boost sales, reduce support tickets, and automate customer interactions from day one.
+        </p>
+        <ul class="shopify-features">
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Product discovery & smart recommendations</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Real-time order tracking via Shopify API</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Cart recovery & abandoned checkout messages</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Returns, refunds & FAQ automation</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Seamless Shopify store integration</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Live in under 2 weeks</li>
+        </ul>
+        <a href="#contact" class="shopify-cta">
+          <iconify-icon icon="mdi:shopify"></iconify-icon> Get Your Shopify Bot
+        </a>
+        <div class="shopify-tags" style="margin-top:24px;">
+          <span class="shopify-tag">Voiceflow</span>
+          <span class="shopify-tag">Shopify API</span>
+          <span class="shopify-tag">Make.com</span>
+          <span class="shopify-tag">E-commerce</span>
+          <span class="shopify-tag">Order Tracking</span>
+        </div>
+      </div>
+
+      <!-- Right: Chat Preview -->
+      <div class="shopify-visual">
+        <div class="shopify-visual-label">Shopify AI Agent — Demo</div>
+
+        <div class="chat-bubble-row">
+          <div class="chat-avatar bot"><iconify-icon icon="mdi:robot-happy" style="color:#fff;font-size:1rem;"></iconify-icon></div>
+          <div class="chat-bubble bot">Hey! Welcome to the store 👋 Looking for something specific or want me to recommend products?</div>
+        </div>
+
+        <div class="chat-bubble-row user">
+          <div class="chat-avatar user-av"><iconify-icon icon="mdi:account" style="color:#fff;font-size:1rem;"></iconify-icon></div>
+          <div class="chat-bubble user">I'm looking for running shoes under $100</div>
+        </div>
+
+        <div class="chat-bubble-row">
+          <div class="chat-avatar bot"><iconify-icon icon="mdi:robot-happy" style="color:#fff;font-size:1rem;"></iconify-icon></div>
+          <div class="chat-bubble bot">Found 3 great options for you! 🏃 The AeroFit X2 ($89), SpeedLite Pro ($95), and TrailRun V3 ($79). Want details on any of these?</div>
+        </div>
+
+        <div class="chat-bubble-row user">
+          <div class="chat-avatar user-av"><iconify-icon icon="mdi:account" style="color:#fff;font-size:1rem;"></iconify-icon></div>
+          <div class="chat-bubble user">Where's my order #4521?</div>
+        </div>
+
+        <div class="chat-bubble-row">
+          <div class="chat-avatar bot"><iconify-icon icon="mdi:robot-happy" style="color:#fff;font-size:1rem;"></iconify-icon></div>
+          <div class="chat-bubble bot">Order #4521 is <strong>out for delivery</strong> 📦 Estimated arrival: today by 6 PM. Track it live here →</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ─── PRICING ──────────────────────────────────────────────── -->
 <section id="pricing">
   <div class="container">
     <div class="reveal">
       <div class="section-label">Investment</div>
       <div class="section-title">Simple, Transparent <span class="grad">Pricing</span></div>
-      <div class="section-sub">No hidden fees. Every project includes a free discovery call to scope your exact needs.</div>
+      <div class="section-sub">Monthly retainer — includes hosting, platform fees, and full maintenance. Cancel anytime.</div>
       <div class="divider"></div>
     </div>
 
     <div class="pricing-grid">
 
-      <!-- Basic -->
+      <!-- Starter -->
       <div class="pricing-card reveal">
-        <div class="pricing-tier">Basic</div>
-        <div class="pricing-price"><span>$</span>150</div>
-        <div class="pricing-sub">One-time project fee</div>
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-price"><span>$</span>200<span style="font-size:1rem;font-weight:400;color:var(--muted)">/mo</span></div>
+        <div class="pricing-sub">Delivered within 1 month</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Simple FAQ or support chatbot</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Up to 10 intents / dialogue flows</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Single platform (Web or WhatsApp)</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> FAQ or lead generation AI agent</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Up to 10 dialogue flows</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Single platform (Web only)</li>
           <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Clean, natural conversation design</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Delivered in ~1 week</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> 1 round of revisions</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Hosting & platform fees included</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Monthly maintenance & updates</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Weekly progress updates</li>
         </ul>
         <div class="pricing-cta">
           <a href="#contact" class="outlined">Get Started</a>
         </div>
       </div>
 
-      <!-- Advanced — Most Popular -->
+      <!-- Growth — Most Popular -->
       <div class="pricing-card popular reveal" style="transition-delay:0.1s">
         <div class="popular-badge">Most Popular</div>
-        <div class="pricing-tier">Advanced</div>
-        <div class="pricing-price"><span>$</span>500</div>
-        <div class="pricing-sub">One-time project fee</div>
+        <div class="pricing-tier">Growth</div>
+        <div class="pricing-price"><span>$</span>500<span style="font-size:1rem;font-weight:400;color:var(--muted)">/mo</span></div>
+        <div class="pricing-sub">Delivered in 1–3 months</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Everything in Basic</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Everything in Starter</li>
           <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Live API & backend integrations</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> CRM / calendar / booking flows</li>
           <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Make.com automation workflows</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> CRM / database sync</li>
           <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Multi-platform deployment</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Booking, lead gen, or order flows</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Delivered in ~2 weeks</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> 2 rounds of revisions</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Custom branding & personality</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Priority support</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Weekly progress updates</li>
         </ul>
         <div class="pricing-cta">
           <a href="#contact" class="filled">Get Started</a>
@@ -1090,17 +1283,17 @@
       <div class="pricing-card reveal" style="transition-delay:0.2s">
         <div class="pricing-tier">Enterprise</div>
         <div class="pricing-price custom-price grad">Custom</div>
-        <div class="pricing-sub">Scoped per project</div>
+        <div class="pricing-sub">Tailored to your needs</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Everything in Advanced</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Everything in Growth</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Complex logic & multi-step automation</li>
           <li><iconify-icon icon="mdi:check-circle"></iconify-icon> RAG & AI knowledge base systems</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Full end-to-end workflow automation</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Government & large-scale deployments</li>
           <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Multi-system & legacy integrations</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Dedicated support & SLA</li>
           <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Custom AI logic & LLM prompting</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Ongoing support & maintenance</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Timeline based on scope</li>
-          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Unlimited revisions</li>
+          <li><iconify-icon icon="mdi:check-circle"></iconify-icon> Weekly progress updates</li>
         </ul>
         <div class="pricing-cta">
           <a href="#contact" class="outlined">Request a Quote</a>
@@ -1110,7 +1303,7 @@
     </div>
 
     <p class="pricing-note reveal">
-      Not sure which plan fits? <strong>Send me a message</strong> — I'll help you figure out the right scope for your budget.
+      All plans are billed monthly. <strong>No hidden fees, no contracts.</strong>
     </p>
   </div>
 </section>
@@ -1305,7 +1498,7 @@
 
   /* ── Typing effect ─────────────────────────────────────────── */
   const phrases = [
-    'intelligent chatbots.',
+    'intelligent AI agents.',
     'seamless automations.',
     'RAG-powered AI.',
     'conversational experiences.',
